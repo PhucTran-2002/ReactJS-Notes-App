@@ -1,4 +1,8 @@
 import { useState } from 'react';
+import EditIcon from '@mui/icons-material/Edit';
+import DeleteIcon from '@mui/icons-material/Delete';
+import SaveIcon from '@mui/icons-material/Save';
+import CancelIcon from '@mui/icons-material/Cancel';
 
 const NoteItem = ({ note, onEdit, onDelete, isEditing, onSave, onCancel }) => {
     const [editedTitle, setEditedTitle] = useState(note.title);
@@ -13,7 +17,7 @@ const NoteItem = ({ note, onEdit, onDelete, isEditing, onSave, onCancel }) => {
     };
   
     return (
-      <div className="bg-white p-4 rounded-lg shadow-md border-l-4 border-blue-500">
+      <div className="bg-white p-4 rounded-lg shadow-md border-l-4 border-green-500">
         {isEditing ? (
           <>
             <input
@@ -31,15 +35,17 @@ const NoteItem = ({ note, onEdit, onDelete, isEditing, onSave, onCancel }) => {
             <div className="flex justify-end space-x-2">
               <button 
                 onClick={onCancel}
-                className="px-3 py-1 bg-gray-500 text-white rounded-lg hover:bg-gray-600 transition"
+                className="px-3 py-1 bg-gray-500 text-white rounded-lg hover:bg-gray-600 transition flex items-center gap-1"
               >
-                X Cancel
+                <CancelIcon fontSize="small" />
+                Cancel
               </button>
               <button 
                 onClick={handleSave}
-                className="px-3 py-1 bg-green-500 text-white rounded-lg hover:bg-green-600 transition"
+                className="px-3 py-1 bg-green-500 text-white rounded-lg hover:bg-green-600 transition flex items-center gap-1"
               >
-                ✔ Save
+                <SaveIcon fontSize="small" />
+                Save
               </button>
             </div>
           </>
@@ -50,14 +56,16 @@ const NoteItem = ({ note, onEdit, onDelete, isEditing, onSave, onCancel }) => {
             <div className="flex justify-end space-x-2">
               <button 
                 onClick={() => onEdit(note.id)}
-                className="px-3 py-1 bg-yellow-500 text-white rounded-lg hover:bg-yellow-600 transition"
+                className="px-3 py-1 bg-yellow-500 text-white rounded-lg hover:bg-yellow-600 transition flex items-center gap-1"
               >
+                <EditIcon fontSize="small" />
                 Edit
               </button>
               <button 
                 onClick={() => onDelete(note.id)}
-                className="px-3 py-1 bg-red-500 text-white rounded-lg hover:bg-red-600 transition"
+                className="px-3 py-1 bg-red-500 text-white rounded-lg hover:bg-red-600 transition flex items-center gap-1"
               >
+                <DeleteIcon fontSize="small" />
                 Delete
               </button>
             </div>

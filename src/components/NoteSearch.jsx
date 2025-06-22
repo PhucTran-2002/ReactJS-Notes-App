@@ -1,12 +1,23 @@
+import { TextField, InputAdornment } from '@mui/material';
+import SearchIcon from '@mui/icons-material/Search';
+
 const NoteSearch = ({ searchTerm, setSearchTerm }) => {
     return (
-      <div className="mb-6">
-        <input
-          type="text"
+      <div className="mb-">
+        <TextField
+          className="focus:ring-emerald-500 focus:border-emerald-500"
+          fullWidth
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
-          className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
           placeholder="Search notes..."
+          InputProps={{
+            startAdornment: (
+              <InputAdornment position="start">
+                <SearchIcon />
+              </InputAdornment>
+            ),
+          }}
+      
         />
       </div>
     );
