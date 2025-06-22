@@ -1,22 +1,15 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
-const NoteForm = ({ onSubmit, editingNote, onCancel }) => {
+const NoteForm = ({ onSubmit }) => {
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
-
-  useEffect(() => {
-    if (editingNote) {
-      setTitle(editingNote.title);
-      setContent(editingNote.content);
-    }
-  }, [editingNote]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!title.trim()) return;
 
     onSubmit({
-      id: editingNote ? editingNote.id : Date.now(),
+      id: Date.now(),
       title,
       content
     });
@@ -27,9 +20,7 @@ const NoteForm = ({ onSubmit, editingNote, onCancel }) => {
 
   return (
     <form onSubmit={handleSubmit} className="mb-6 bg-gray-50 p-4 rounded-lg">
-      <h2 className="text-xl font-semibold mb-4">
-        {editingNote ? 'Edit Note' : 'Create New Note'}
-      </h2>
+      <h2 className="text-xl font-semibold mb-4">Create New Note</h2>
       
       <div className="mb-4">
         <label htmlFor="title" className="block font-medium mb-1 text-gray-700">
@@ -60,23 +51,12 @@ const NoteForm = ({ onSubmit, editingNote, onCancel }) => {
         />
       </div>
       
-      <div className="flex justify-end space-x-2">
-        {editingNote && (
-          <button
-            type="button"
-            onClick={onCancel}
-            className="px-4 py-2 bg-gray-500 text-white rounded-lg hover:bg-gray-600 transition"
-          >
-            Cancel
-          </button>
-        )}
-        <button
-          type="submit"
-          className="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition"
-        >
-          {editingNote ? 'Update Note' : 'Save Note'}
-        </button>
-      </div>
+      <button
+        type="submit"
+        className="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition"
+      >
+        Save Note
+      </button>
     </form>
   );
 };

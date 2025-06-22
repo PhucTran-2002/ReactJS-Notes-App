@@ -1,6 +1,6 @@
 import NoteItem from './NoteItem';
 
-const NoteList = ({ notes, searchTerm, onEdit, onDelete }) => {
+const NoteList = ({ notes, searchTerm, editingId, onEdit, onSave, onCancel, onDelete }) => {
   const filteredNotes = notes.filter(note => 
     note.title.toLowerCase().includes(searchTerm.toLowerCase()) || 
     note.content.toLowerCase().includes(searchTerm.toLowerCase())
@@ -13,8 +13,11 @@ const NoteList = ({ notes, searchTerm, onEdit, onDelete }) => {
           <NoteItem 
             key={note.id} 
             note={note} 
-            onEdit={onEdit} 
-            onDelete={onDelete} 
+            isEditing={note.id === editingId}
+            onEdit={onEdit}
+            onSave={onSave}
+            onCancel={onCancel}
+            onDelete={onDelete}
           />
         ))
       ) : (

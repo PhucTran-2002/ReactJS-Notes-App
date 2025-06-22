@@ -8,7 +8,7 @@ import NoteList from './components/NoteList';
 function App() {
   const [notes, setNotes] = useLocalStorage('notes', []);
   const [searchTerm, setSearchTerm] = useState('');
-  const [editingNote, setEditingNote] = useState(null);
+  const [editingId, setEditingId] = useState(null);
 
   const addNote = (note) => {
     setNotes([...notes, note]);
@@ -18,19 +18,23 @@ function App() {
     setNotes(notes.map(note => 
       note.id === updatedNote.id ? updatedNote : note
     ));
-    setEditingNote(null);
+    setEditingId(null);
   };
 
   const deleteNote = (id) => {
     setNotes(notes.filter(note => note.id !== id));
   };
 
-  const handleSubmit = (note) => {
-    editingNote ? updateNote(note) : addNote(note);
+  const handleEdit = (id) => {
+    setEditingId(id);
+  };
+
+  const handleSave = (updatedNote) => {
+    updateNote(updatedNote);
   };
 
   const handleCancel = () => {
-    setEditingNote(null);
+    setEditingId(null);
   };
 
   return (
@@ -40,16 +44,17 @@ function App() {
       <NoteSearch searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
       
       <NoteForm 
-        onSubmit={handleSubmit} 
-        editingNote={editingNote}
-        onCancel={handleCancel}
+        onSubmit={addNote} 
       />
       
       <NoteList 
         notes={notes} 
         searchTerm={searchTerm} 
-        onEdit={setEditingNote} 
-        onDelete={deleteNote} 
+        editingId={editingId}
+        onEdit={handleEdit}
+        onSave={handleSave}
+        onCancel={handleCancel}
+        onDelete={deleteNote}
       />
     </div>
   );
