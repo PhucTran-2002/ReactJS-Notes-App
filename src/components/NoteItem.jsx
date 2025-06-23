@@ -37,7 +37,7 @@ const NoteItem = ({ note, onEdit, onDelete, isEditing, onSave, onCancel }) => {
             <div className="flex justify-end space-x-2">
               <button 
                 onClick={onCancel}
-                className="px-3 py-1 bg-white-500 text-black border rounded-lg  hover:bg-white-600 transition flex items-center gap-1"
+                className="px-3 py-1 bg-white-500 text-black border hover:boder-green-1000 rounded-lg transition flex items-center gap-1"
               >
                 <CancelIcon fontSize="small" />
                 Cancel

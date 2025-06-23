@@ -42,18 +42,25 @@ const NoteForm = ({ onSubmit }) => {
       <h2 className="text-xl mb-4">Create New Note</h2>
       
       <div className="mb-4">
-        <label htmlFor="title" className="block  mb-1 text-gray-700">
+        <label htmlFor="title" className="block mb-1 text-gray-700">
           Title
         </label>
         <input
           id="title"
           type="text"
           value={title}
-          onChange={(e) => setTitle(e.target.value)}
-          className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-emerald-500 focus:border-emerald-500"
+          onChange={(e) => {
+            setTitle(e.target.value);
+            setErrors({...errors, title: false});
+          }}
+          className={`mt-1 block w-full border ${
+            errors.title ? 'border-red-500' : 'border-gray-300'
+          } rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-emerald-500 focus:border-emerald-500`}
           placeholder="Note title"
-          required
         />
+        {errors.title && (
+          <p className="mt-1 text-sm text-red-600">Please enter a title</p>
+        )}
       </div>
       
       <div className="mb-4">
