@@ -21,7 +21,7 @@ const NoteList = ({ notes, searchTerm, editingId, onEdit, onSave, onCancel, onDe
           />
         ))
       ) : (
-        <p className="text-center text-gray-500 py-4">
+        <p className="text-center text-gray-500 py-6">
           {searchTerm ? 'No matching notes found' : 'No notes yet. Add one above!'}
         </p>
       )}

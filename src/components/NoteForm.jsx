@@ -20,11 +20,11 @@ const NoteForm = ({ onSubmit }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="mb-6 bg-white-50 p-4 rounded-lg">
-      <h2 className="text-xl font-semibold mb-4">Create New Note</h2>
+    <form onSubmit={handleSubmit} className="mb-6 bg-white p-4 rounded-lg">
+      <h2 className="text-xl mb-4">Create New Note</h2>
       
       <div className="mb-4">
-        <label htmlFor="title" className="block font-medium mb-1 text-gray-700">
+        <label htmlFor="title" className="block  mb-1 text-gray-700">
           Title
         </label>
         <input
@@ -39,7 +39,7 @@ const NoteForm = ({ onSubmit }) => {
       </div>
       
       <div className="mb-4">
-        <label htmlFor="content" className="block font-medium mb-1 text-gray-700">
+        <label htmlFor="content" className="block  mb-1 text-gray-700">
           Content
         </label>
         <textarea
@@ -55,7 +55,7 @@ const NoteForm = ({ onSubmit }) => {
       <div className="flex justify-end">
       <button
         type="submit"
-        className="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition flex items-center gap-2"
+        className="px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 transition flex items-center gap-2"
       >
         <SaveIcon fontSize="small" />
         Save Note

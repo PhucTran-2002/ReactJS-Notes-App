@@ -3,6 +3,8 @@ import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 import SaveIcon from '@mui/icons-material/Save';
 import CancelIcon from '@mui/icons-material/Cancel';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const NoteItem = ({ note, onEdit, onDelete, isEditing, onSave, onCancel }) => {
     const [editedTitle, setEditedTitle] = useState(note.title);
@@ -24,18 +26,18 @@ const NoteItem = ({ note, onEdit, onDelete, isEditing, onSave, onCancel }) => {
               type="text"
               value={editedTitle}
               onChange={(e) => setEditedTitle(e.target.value)}
-              className="w-full p-2 mb-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full p-2 mb-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-emerald-500 focus:border-emerald-500"
             />
             <textarea
               value={editedContent}
               onChange={(e) => setEditedContent(e.target.value)}
-              className="w-full p-2 mb-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full p-2 mb-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-emerald-500 focus:border-emerald-500"
               rows="3"
             />
             <div className="flex justify-end space-x-2">
               <button 
                 onClick={onCancel}
-                className="px-3 py-1 bg-gray-500 text-white rounded-lg hover:bg-gray-600 transition flex items-center gap-1"
+                className="px-3 py-1 bg-white-500 text-black border rounded-lg  hover:bg-white-600 transition flex items-center gap-1"
               >
                 <CancelIcon fontSize="small" />
                 Cancel
@@ -56,13 +58,20 @@ const NoteItem = ({ note, onEdit, onDelete, isEditing, onSave, onCancel }) => {
             <div className="flex justify-end space-x-2">
               <button 
                 onClick={() => onEdit(note.id)}
-                className="px-3 py-1 bg-yellow-500 text-white rounded-lg hover:bg-yellow-600 transition flex items-center gap-1"
+                className="px-3 py-1 bg-white-500 text-black rounded-lg hover:boder-green-600 transition flex items-center gap-1"
               >
                 <EditIcon fontSize="small" />
                 Edit
               </button>
               <button 
-                onClick={() => onDelete(note.id)}
+                  onClick={() => {
+                    onDelete(note.id);
+                    toast.success('Đã xóa thành công!', {
+                      position: "top-right",
+                      autoClose: 2000,
+                      hideProgressBar: true,
+                    });
+                  }}
                 className="px-3 py-1 bg-red-500 text-white rounded-lg hover:bg-red-600 transition flex items-center gap-1"
               >
                 <DeleteIcon fontSize="small" />
