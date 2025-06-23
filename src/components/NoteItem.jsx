@@ -21,8 +21,8 @@ const NoteItem = ({ note, onEdit, onDelete, isEditing, onSave, onCancel }) => {
       }
       onSave({
         ...note,
-        title: editedTitle,
-        content: editedContent
+        title: editedTitle.trim(),
+        content: editedContent.replace(/\s+/g, ' ').trim()
       });
     };
   

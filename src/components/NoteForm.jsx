@@ -27,7 +27,7 @@ const NoteForm = ({ onSubmit }) => {
       onSubmit({
         id: Date.now(),
         title: title.trim(),
-        content: content.trim()
+        content: content.replace(/\s+/g, ' ').trim()
       });
       setTitle('');
       setContent('');
