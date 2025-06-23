@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import SaveIcon from '@mui/icons-material/Save';
+import { Message } from '@mui/icons-material';
 
 const NoteForm = ({ onSubmit }) => {
   const [title, setTitle] = useState('');
@@ -31,6 +32,7 @@ const NoteForm = ({ onSubmit }) => {
       setTitle('');
       setContent('');
       setErrors({ title: false, content: false });
+
     }
   };
 
