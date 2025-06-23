@@ -18,7 +18,7 @@ function App() {
 
   const updateNote = (updatedNote) => {
     setNotes(prevNotes => prevNotes.map(note => 
-      note.id === updatedNote.id ? updatedNote : note
+      note.id === updatedNote.id ? { ...updatedNote, title: updatedNote.title.trim(), content: updatedNote.content.trim() } : note
     ));
     setEditingId(null);
   };
