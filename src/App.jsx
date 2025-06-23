@@ -13,18 +13,18 @@ function App() {
   const [editingId, setEditingId] = useState(null);
 
   const addNote = (note) => {
-    setNotes([...notes, note]);
+    setNotes(prevNotes => [...prevNotes, note]);
   };
 
   const updateNote = (updatedNote) => {
-    setNotes(notes.map(note => 
+    setNotes(prevNotes => prevNotes.map(note => 
       note.id === updatedNote.id ? updatedNote : note
     ));
     setEditingId(null);
   };
 
   const deleteNote = (id) => {
-    setNotes(notes.filter(note => note.id !== id));
+    setNotes(prevNotes => prevNotes.filter(note => note.id !== id));
   };
 
   const handleEdit = (id) => {
