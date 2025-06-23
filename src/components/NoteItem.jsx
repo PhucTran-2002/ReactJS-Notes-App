@@ -11,6 +11,14 @@ const NoteItem = ({ note, onEdit, onDelete, isEditing, onSave, onCancel }) => {
     const [editedContent, setEditedContent] = useState(note.content);
   
     const handleSave = () => {
+      if (!editedTitle.trim() || !editedContent.trim()) {
+        toast.error('Title and content cannot be empty!', {
+          position: "top-right",
+          autoClose: 2000,
+          hideProgressBar: true,
+        });
+        return;
+      }
       onSave({
         ...note,
         title: editedTitle,
