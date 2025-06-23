@@ -4,6 +4,8 @@ import Header from './components/Header';
 import NoteSearch from './components/NoteSearch';
 import NoteForm from './components/NoteForm';
 import NoteList from './components/NoteList';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   const [notes, setNotes] = useLocalStorage('notes', []);
@@ -56,6 +58,8 @@ function App() {
         onCancel={handleCancel}
         onDelete={deleteNote}
       />
+      
+      <ToastContainer />
     </div>
   );
 }

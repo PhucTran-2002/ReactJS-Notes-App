@@ -6,7 +6,6 @@ const NoteSearch = ({ searchTerm, setSearchTerm }) => {
     const value = e.target.value.trimStart();
     setSearchTerm(value);
   };
-
   return (
     <div className="mb-6 pt-20">
       <TextField

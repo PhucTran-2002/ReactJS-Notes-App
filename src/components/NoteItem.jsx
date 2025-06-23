@@ -58,7 +58,7 @@ const NoteItem = ({ note, onEdit, onDelete, isEditing, onSave, onCancel }) => {
             <div className="flex justify-end space-x-2">
               <button 
                 onClick={() => onEdit(note.id)}
-                className="px-3 py-1 bg-white-500 text-black rounded-lg hover:boder-green-600 transition flex items-center gap-1"
+                className="px-3 py-1 bg-white-500 text-black border rounded-lg hover:boder-green-600 transition flex items-center gap-1"
               >
                 <EditIcon fontSize="small" />
                 Edit
@@ -66,7 +66,7 @@ const NoteItem = ({ note, onEdit, onDelete, isEditing, onSave, onCancel }) => {
               <button 
                   onClick={() => {
                     onDelete(note.id);
-                    toast.success('Đã xóa thành công!', {
+                    toast.success('Deleted successfully!', {
                       position: "top-right",
                       autoClose: 2000,
                       hideProgressBar: true,
